@@ -1,0 +1,7 @@
+mbed_settings.py
+mbed_settings.pyc
+.mbed
+BUILD
+mbed-os
+mbed/.bld/
+.temp
