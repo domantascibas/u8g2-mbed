@@ -56,29 +56,32 @@
                 "${workspaceRoot}/mbed-os/targets/TARGET_STM",
                 "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4",
                 "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/device",
-                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_NUCLEO_F401RE",
-                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_NUCLEO_F401RE/device",
-                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_NUCLEO_F401RE/device/TOOLCHAIN_GCC_ARM",
+                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F401xE",
+                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F401xE/TARGET_NUCLEO_F401RE",
+                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F401xE/device",
+                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F401xE/device/TOOLCHAIN_GCC_ARM",
                 "C:/MinGW/include",
                 "C:/MinGW/lib/gcc/mingw32/6.3.0/include",
                 "C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++",
                 "C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32",
                 "C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/backward",
                 "C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/tr1",
-                "C:/MinGW/lib/gcc/mingw32/6.3.0/include-fixed"
+                "C:/MinGW/lib/gcc/mingw32/6.3.0/include-fixed",
+                "${workspaceRoot}/u8g2/csrc",
+                "${workspaceRoot}/src"
             ],
             "defines": [
-              "_DEBUG",
-              "UNICODE"
+                "_DEBUG",
+                "UNICODE"
             ],
             "intelliSenseMode": "msvc-x64",
             "browse": {
                 "path": [
-                  "${workspaceRoot}",
-                  "${workspaceRoot}/mbed-os",
-                  "C:/MinGW/lib/gcc/mingw32/6.3.0/include",
-                  "C:/MinGW/lib/gcc/mingw32/6.3.0/include-fixed",
-                  "C:/MinGW/include/*"
+                    "${workspaceRoot}",
+                    "${workspaceRoot}/mbed-os",
+                    "C:/MinGW/lib/gcc/mingw32/6.3.0/include",
+                    "C:/MinGW/lib/gcc/mingw32/6.3.0/include-fixed",
+                    "C:/MinGW/include/*"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
