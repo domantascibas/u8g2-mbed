@@ -14,12 +14,12 @@ void setup() {
 
   u8g2_SetFont(&myScreen, u8g2_font_freedoomr10_tu);
   u8g2_DrawUTF8(&myScreen, 0, 12, "NECTARSUN");
-  u8g2_SetFont(&myScreen, u8g2_font_amstrad_cpc_extended_8f);
-  u8g2_DrawUTF8(&myScreen, 0, 24, "ačiū");
+  u8g2_SetFont(&myScreen, LargeFont);
+  u8g2_DrawUTF8(&myScreen, 0, 32, "ačiū");
   u8g2_SetFont(&myScreen, u8g2_font_b10_t_japanese1);
-  u8g2_DrawUTF8(&myScreen, 0, 34, "こんにちは世界");
+  u8g2_DrawUTF8(&myScreen, 0, 42, "こんにちは世界");
   u8g2_SetFont(&myScreen, u8g2_font_unifont_t_chinese2);
-  u8g2_DrawUTF8(&myScreen, 0, 54, "你好世界");
+  u8g2_DrawUTF8(&myScreen, 0, 62, "你好世界");
 
   u8g2_SendBuffer(&myScreen);
 }
