@@ -26,17 +26,46 @@
         {
             "name": "Linux",
             "includePath": [
-                "/usr/include",
-                "/usr/local/include",
-                "${workspaceRoot}"
+                "${localappdata}/lxss/rootfs/usr/include/c++/5",
+                "${localappdata}/lxss/rootfs/usr/include/x86_64-linux-gnu/c++/5",
+                "${localappdata}/lxss/rootfs/usr/include/c++/5/backward",
+                "${localappdata}/lxss/rootfs/usr/lib/gcc/x86_64-linux-gnu/5/include",
+                "${localappdata}/lxss/rootfs/usr/local/include",
+                "${localappdata}/lxss/rootfs/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",
+                "${localappdata}/lxss/rootfs/usr/include/x86_64-linux-gnu",
+                "${localappdata}/lxss/rootfs/usr/include",
+                "${workspaceRoot}",
+                "${workspaceRoot}/mbed-os",
+                "${workspaceRoot}/mbed-os/cmsis",
+                "${workspaceRoot}/mbed-os/cmsis/TARGET_CORTEX_M",
+                "${workspaceRoot}/mbed-os/cmsis/TARGET_CORTEX_M/TOOLCHAIN_GCC",
+                "${workspaceRoot}/mbed-os/drivers",
+                "${workspaceRoot}/mbed-os/hal",
+                "${workspaceRoot}/mbed-os/platform",
+                "${workspaceRoot}/mbed-os/targets/TARGET_STM",
+                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4",
+                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/device",
+                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F401xE",
+                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F401xE/TARGET_NUCLEO_F401RE",
+                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F401xE/device",
+                "${workspaceRoot}/mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F401xE/device/TOOLCHAIN_GCC_ARM",
+                "${workspaceRoot}/u8g2/csrc",
+                "${workspaceRoot}/src",
+                "${workspaceRoot}/fonts"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
-                    "/usr/include",
-                    "/usr/local/include",
-                    "${workspaceRoot}"
+                    "${localappdata}/lxss/rootfs/usr/include/c++/5",
+                    "${localappdata}/lxss/rootfs/usr/include/x86_64-linux-gnu/c++/5",
+                    "${localappdata}/lxss/rootfs/usr/lib/gcc/x86_64-linux-gnu/5/include",
+                    "${localappdata}/lxss/rootfs/usr/local/include",
+                    "${localappdata}/lxss/rootfs/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",
+                    "${localappdata}/lxss/rootfs/usr/include/x86_64-linux-gnu",
+                    "${localappdata}/lxss/rootfs/usr/include/*",
+                    "${workspaceRoot}",
+                    "${workspaceRoot}/mbed-os"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
@@ -68,7 +97,8 @@
                 "C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/tr1",
                 "C:/MinGW/lib/gcc/mingw32/6.3.0/include-fixed",
                 "${workspaceRoot}/u8g2/csrc",
-                "${workspaceRoot}/src"
+                "${workspaceRoot}/src",
+                "${workspaceRoot}/fonts"
             ],
             "defines": [
                 "_DEBUG",
