@@ -1,113 +1,37 @@
 #include "mbed.h"
-#include "delay.h"
-#include "u8x8.h"
+#include "u8g2.h"
 
-// i2c SCL PA_9
-// i2c SDA PA_10
+DigitalOut led(D13);
 
-DigitalInOut i2c_scl(PB_8);
-DigitalInOut i2c_sda(PB_9);
+uint8_t u8x8_gpio_and_delay_stm32f4(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr);
+u8g2_t myScreen;
 
-uint8_t u8x8_gpio_and_delay_stm32f4(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
-{
-  switch (msg)
-  {
-  case U8X8_MSG_GPIO_AND_DELAY_INIT:
-    /* only support for software I2C*/
+void setup() {
+  u8g2_Setup_ssd1306_i2c_128x64_noname_f(&myScreen, U8G2_R0, u8x8_byte_sw_i2c, u8x8_gpio_and_delay_stm32f4);
+  u8g2_InitDisplay(&myScreen);
+  u8g2_SetPowerSave(&myScreen, 0);
+  u8g2_ClearBuffer(&myScreen);
 
-    i2c_scl.output();
-    i2c_sda.output();
+  u8g2_SetFont(&myScreen, XLargeFont);
+  u8g2_DrawUTF8(&myScreen, 0, 62, "53");
+  // u8g2_SetFont(&myScreen, LargeFont);
+  // u8g2_DrawUTF8(&myScreen, 0, 32, "ačiū");
+  // u8g2_SetFont(&myScreen, u8g2_font_b10_t_japanese1);
+  // u8g2_DrawUTF8(&myScreen, 0, 42, "こんにちは世界");
+  // u8g2_SetFont(&myScreen, u8g2_font_unifont_t_chinese2);
+  // u8g2_DrawUTF8(&myScreen, 0, 62, "你好世界");
 
-    // RCC->IOPENR |= RCC_IOPENR_IOPAEN; /* Enable clock for GPIO Port A */
-    // __NOP();
-    // __NOP();
+  u8g2_SendBuffer(&myScreen);
+}
 
-    // GPIOA->MODER &= ~GPIO_MODER_MODE10; /* clear mode for PA10 */
-    // //GPIOA->MODER |= GPIO_MODER_MODE10_0;	/* Output mode for PA10 */
-    // GPIOA->OTYPER &= ~GPIO_OTYPER_OT_10;       /* no open drain for PA10 */
-    // GPIOA->OSPEEDR &= ~GPIO_OSPEEDER_OSPEED10; /* low speed for PA10 */
-    // GPIOA->PUPDR &= ~GPIO_PUPDR_PUPD10;        /* no pullup/pulldown for PA10 */
-    // //GPIOA->BSRR = GPIO_BSRR_BS_10;		/* atomic set PA10 */
-
-    // GPIOA->MODER &= ~GPIO_MODER_MODE9; /* clear mode for PA9 */
-    // //GPIOA->MODER |= GPIO_MODER_MODE9_0;	/* Output mode for PA9 */
-    // GPIOA->OTYPER &= ~GPIO_OTYPER_OT_9;       /* no open drain for PA9 */
-    // GPIOA->OSPEEDR &= ~GPIO_OSPEEDER_OSPEED9; /* low speed for PA9 */
-    // GPIOA->PUPDR &= ~GPIO_PUPDR_PUPD9;        /* no pullup/pulldown for PA9 */
-    // //GPIOA->BSRR = GPIO_BSRR_BS_9;		/* atomic set PA9 */
-
-    break;
-  case U8X8_MSG_DELAY_NANO:
-    /* not required for SW I2C */
-    break;
-
-  case U8X8_MSG_DELAY_10MICRO:
-    /* not used at the moment */
-    break;
-
-  case U8X8_MSG_DELAY_100NANO:
-    /* not used at the moment */
-    break;
-
-  case U8X8_MSG_DELAY_MILLI:
-    delay_micro_seconds(arg_int * 1000UL);
-    break;
-  case U8X8_MSG_DELAY_I2C:
-    /* arg_int is 1 or 4: 100KHz (5us) or 400KHz (1.25us) */
-    delay_micro_seconds(arg_int<=2?5:1);
-    break;
-
-  case U8X8_MSG_GPIO_I2C_CLOCK:
-
-    if (arg_int == 0)
-    {
-      // GPIOA->MODER &= ~GPIO_MODER_MODE9;  /* clear mode for PA10 */
-      // GPIOA->MODER |= GPIO_MODER_MODE9_0; /* Output mode for PA10 */
-      // GPIOA->BSRR = GPIO_BSRR_BR_9;       /* atomic clr PA9 */
-      i2c_scl.output();
-    }
-    else
-    {
-      //GPIOA->BSRR = GPIO_BSRR_BS_9;		/* atomic set PA9 */
-      // GPIOA->MODER &= ~GPIO_MODER_MODE9; /* clear mode for PA9: input mode */
-      i2c_scl.input();
-    }
-    break;
-  case U8X8_MSG_GPIO_I2C_DATA:
-
-    if (arg_int == 0)
-    {
-      // GPIOA->MODER &= ~GPIO_MODER_MODE10;  /* clear mode for PA10 */
-      // GPIOA->MODER |= GPIO_MODER_MODE10_0; /* Output mode for PA10 */
-      // GPIOA->BSRR = GPIO_BSRR_BR_10;       /* atomic clr PA10 */
-      i2c_sda.output();
-    }
-    else
-    {
-      //GPIOA->BSRR = GPIO_BSRR_BS_10;		/* atomic set PA10 */
-      // input mode
-      // GPIOA->MODER &= ~GPIO_MODER_MODE10; /* clear mode for PA10: input mode */
-      i2c_sda.input();
-    }
-    break;
-    /*
-    case U8X8_MSG_GPIO_MENU_SELECT:
-      u8x8_SetGPIOResult(u8x8, Chip_GPIO_GetPinState(LPC_GPIO, KEY_SELECT_PORT, KEY_SELECT_PIN));
-      break;
-    case U8X8_MSG_GPIO_MENU_NEXT:
-      u8x8_SetGPIOResult(u8x8, Chip_GPIO_GetPinState(LPC_GPIO, KEY_NEXT_PORT, KEY_NEXT_PIN));
-      break;
-    case U8X8_MSG_GPIO_MENU_PREV:
-      u8x8_SetGPIOResult(u8x8, Chip_GPIO_GetPinState(LPC_GPIO, KEY_PREV_PORT, KEY_PREV_PIN));
-      break;
-    
-    case U8X8_MSG_GPIO_MENU_HOME:
-      u8x8_SetGPIOResult(u8x8, Chip_GPIO_GetPinState(LPC_GPIO, KEY_HOME_PORT, KEY_HOME_PIN));
-      break;
-*/
-  default:
-    u8x8_SetGPIOResult(u8x8, 1);
-    break;
+int main() {
+  led = 0;
+  // printf("Hello world");
+  setup();
+  
+  while(1) {
+    led = !led;
+    wait(1.0);
   }
-  return 1;
+  return 0;
 }
