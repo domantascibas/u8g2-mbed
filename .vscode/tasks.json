@@ -11,6 +11,16 @@
         "kind": "build",
         "isDefault": true
       }
+    },
+    {
+      "label": "flash mbed project",
+      "type": "shell",
+      "command": "mbed compile -f",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
     }
   ]
 }
