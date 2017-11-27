@@ -1,5 +1,14 @@
 # U82g-mbed
-using u8g2 lib: https://github.com/olikraus/u8g2
+
+* Update the Readme with proper installtion/preparation instructions
+
+### Installation
+* need to download and install the mbed-cli (https://github.com/ARMmbed/mbed-cli)
+* use the `mbed deploy` command to download the dependencies (mbed-os and u8g2)
+
+### Libraries used
+* https://github.com/olikraus/u8g2
+* https://github.com/ARMmbed/mbed-os
 
 ### Generating new fonts
 On unix, first install `ftview` and `otf2bdf`:
