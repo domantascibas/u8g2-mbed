@@ -1,4 +1,4 @@
-# U82g-mbed
+# u8g2-mbed
 
 * Update the Readme with proper installtion/preparation instructions
 
