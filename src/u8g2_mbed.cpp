@@ -8,7 +8,7 @@
 DigitalInOut i2c_scl(PB_8);
 DigitalInOut i2c_sda(PB_9);
 
-uint8_t u8x8_gpio_and_delay_stm32f4(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+uint8_t u8x8_gpio_and_delay_mbed(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
 {
   switch (msg)
   {
